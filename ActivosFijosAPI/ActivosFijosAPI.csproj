@@ -177,18 +177,46 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ActivoController.cs" />
+    <Compile Include="Controllers\AsientoContableController.cs" />
     <Compile Include="Controllers\DepartamentoController.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TipoActivoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Data\dsActivos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsActivos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\dsAsientoContable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAsientoContable.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\dsDepartamentos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDepartamentos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Data\dsEmpleados.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEmpleados.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\dsTipoActivos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTipoActivos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Activo.cs" />
+    <Compile Include="Models\AsientoContable.cs" />
     <Compile Include="Models\Departamento.cs" />
+    <Compile Include="Models\Empleado.cs" />
+    <Compile Include="Models\TipoActivo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +253,28 @@
     <Content Include="Data\dsDepartamentos.xsc">
       <DependentUpon>dsDepartamentos.xsd</DependentUpon>
     </Content>
+    <Content Include="Data\dsActivos.xsc">
+      <DependentUpon>dsActivos.xsd</DependentUpon>
+    </Content>
+    <None Include="Data\dsActivos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsActivos.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\dsActivos.xss">
+      <DependentUpon>dsActivos.xsd</DependentUpon>
+    </Content>
+    <Content Include="Data\dsAsientoContable.xsc">
+      <DependentUpon>dsAsientoContable.xsd</DependentUpon>
+    </Content>
+    <None Include="Data\dsAsientoContable.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAsientoContable.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\dsAsientoContable.xss">
+      <DependentUpon>dsAsientoContable.xsd</DependentUpon>
+    </Content>
     <None Include="Data\dsDepartamentos.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -232,6 +282,28 @@
     </None>
     <Content Include="Data\dsDepartamentos.xss">
       <DependentUpon>dsDepartamentos.xsd</DependentUpon>
+    </Content>
+    <Content Include="Data\dsEmpleados.xsc">
+      <DependentUpon>dsEmpleados.xsd</DependentUpon>
+    </Content>
+    <None Include="Data\dsEmpleados.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEmpleados.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\dsEmpleados.xss">
+      <DependentUpon>dsEmpleados.xsd</DependentUpon>
+    </Content>
+    <Content Include="Data\dsTipoActivos.xsc">
+      <DependentUpon>dsTipoActivos.xsd</DependentUpon>
+    </Content>
+    <None Include="Data\dsTipoActivos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTipoActivos.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\dsTipoActivos.xss">
+      <DependentUpon>dsTipoActivos.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\ActivosFijosAPI20171107045022 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
