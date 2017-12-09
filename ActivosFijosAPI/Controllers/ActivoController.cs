@@ -21,8 +21,6 @@ namespace ActivosFijosAPI.Controllers
 
             return Ok(new { activos = list });
 
-
-
         }
 
         // GET: api/Empleado/5
@@ -42,15 +40,19 @@ namespace ActivosFijosAPI.Controllers
         }
 
         // POST: api/Empleado
-        public void Post([FromBody]Activo value)
+        public HttpResponseMessage Post([FromBody]Activo value)
         {
             Activo.InsertActivo(value.Descripcion, value.ID_Departamento, value.ID_TipoActivo, value.FechaRegistro, value.ValorCompra, value.DepreciacionAcumulada);
+
+            return Request.CreateResponse(HttpStatusCode.OK, new Activo().SelectActivoLatest());
         }
 
         // PUT: api/Empleado/5
-        public void Put([FromBody]Activo value)
+        public HttpResponseMessage Put([FromBody]Activo value)
         {
             Activo.UpdateActivo(value.Id, value.Descripcion, value.ID_Departamento, value.ID_TipoActivo, value.FechaRegistro, value.ValorCompra, value.DepreciacionAcumulada);
+
+            return Request.CreateResponse(HttpStatusCode.OK, new Activo().SelectActivoLatest());
         }
 
         // DELETE: api/Empleado/5

@@ -65,6 +65,27 @@ namespace ActivosFijosAPI.Models
             return this;
         }
 
+        public Activo SelectActivoLatest()
+        {
+            Data.dsActivosTableAdapters.ActivoTableAdapter adapter = new Data.dsActivosTableAdapters.ActivoTableAdapter();
+            Data.dsActivos.ActivoDataTable dt = adapter.SelectActivoLatest();
+
+            if (dt.Rows.Count <= 0)
+                return new Activo();
+
+            this.Id = dt.First().ID_Activo;
+            this.Descripcion = dt.First().Descripcion;
+            this.ID_Departamento = dt.First().ID_Departamento;
+            this.ID_TipoActivo = dt.First().ID_TipoActivo;
+            this.FechaRegistro = dt.First().FechaRegistro.ToShortDateString();
+            this.ValorCompra = dt.First().ValorCompra;
+            this.DepreciacionAcumulada = dt.First().DepreciacionAcumulada;
+
+
+            return this;
+        }
+
+
         public static void InsertActivo(string Descripcion, int ID_Departamento, int ID_TipoActivo, string FechaRegistro, decimal ValorCompra, decimal DepreciacionAcumulada)
         {
             Data.dsActivosTableAdapters.ActivoTableAdapter adapter = new Data.dsActivosTableAdapters.ActivoTableAdapter();

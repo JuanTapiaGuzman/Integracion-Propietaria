@@ -41,15 +41,17 @@ namespace ActivosFijosAPI.Controllers
         }
 
         // POST: api/Empleado
-        public void Post([FromBody]AsientoContable value)
+        public HttpResponseMessage Post([FromBody]AsientoContable value)
         {
             AsientoContable.InsertAsientoContable(value.Descripcion, value.ID_TipoInventario, value.CuentaContable, value.TipoMovimiento, value.FechaAsiento, value.MontoAsiento, value.Estado);
+            return Request.CreateResponse(HttpStatusCode.OK, new AsientoContable().SelectAsientoContableLatest());
         }
 
         // PUT: api/Empleado/5
-        public void Put([FromBody]AsientoContable value)
+        public HttpResponseMessage Put([FromBody]AsientoContable value)
         {
             AsientoContable.UpdateAsientoContable(value.Id, value.Descripcion, value.ID_TipoInventario, value.CuentaContable, value.TipoMovimiento, value.FechaAsiento, value.MontoAsiento, value.Estado);
+            return Request.CreateResponse(HttpStatusCode.OK, new AsientoContable().SelectAsientoContableLatest());
         }
 
         // DELETE: api/Empleado/5

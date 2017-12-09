@@ -35,15 +35,17 @@ namespace ActivosFijosAPI.Controllers
         }
 
         // POST: api/Departamento
-        public void Post([FromBody]Departamento value)
+        public HttpResponseMessage Post([FromBody]Departamento value)
         {
             Departamento.InsertDepartamento(value.Descripcion, value.Estado);
+            return Request.CreateResponse(HttpStatusCode.OK, new Departamento().SelectDepartamentoLatest());
         }
 
         // PUT: api/Departamento/5
-        public void Put([FromBody]Departamento value)
+        public HttpResponseMessage Put([FromBody]Departamento value)
         {
             Departamento.UpdateDepartamento(value.Id, value.Descripcion, value.Estado);
+            return Request.CreateResponse(HttpStatusCode.OK, new Departamento().SelectDepartamentoLatest());
         }
 
         // DELETE: api/Departamento/5

@@ -41,15 +41,19 @@ namespace ActivosFijosAPI.Controllers
         }
 
         // POST: api/Empleado
-        public void Post([FromBody]Empleado value)
+        public HttpResponseMessage Post([FromBody]Empleado value)
         {
             Empleado.InsertEmpleado(value.Nombre, value.Cedula, value.ID_Departamento, value.TipoPersona, value.FechaIngreso, value.Estado);
+
+            return Request.CreateResponse(HttpStatusCode.OK, new Empleado().SelectEmpleadoLatest());
         }
 
         // PUT: api/Empleado/5
-        public void Put([FromBody]Empleado value)
+        public HttpResponseMessage Put([FromBody]Empleado value)
         {
             Empleado.UpdateEmpleado(value.Id, value.Nombre, value.Cedula, value.ID_Departamento, value.TipoPersona, value.FechaIngreso, value.Estado);
+
+            return Request.CreateResponse(HttpStatusCode.OK, new Empleado().SelectEmpleadoLatest());
         }
 
         // DELETE: api/Empleado/5
