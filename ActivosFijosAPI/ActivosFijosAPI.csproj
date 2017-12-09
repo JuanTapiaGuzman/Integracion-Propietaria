@@ -53,11 +53,17 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -179,6 +185,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ActivoController.cs" />
     <Compile Include="Controllers\AsientoContableController.cs" />
+    <Compile Include="Controllers\CalculoDepreciacionController.cs" />
     <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -193,6 +200,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsAsientoContable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\dsCalculoDepreciacion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCalculoDepreciacion.xsd</DependentUpon>
     </Compile>
     <Compile Include="Data\dsDepartamentos.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -214,6 +226,7 @@
     </Compile>
     <Compile Include="Models\Activo.cs" />
     <Compile Include="Models\AsientoContable.cs" />
+    <Compile Include="Models\CalculoDepreciacion.cs" />
     <Compile Include="Models\Departamento.cs" />
     <Compile Include="Models\Empleado.cs" />
     <Compile Include="Models\TipoActivo.cs" />
@@ -274,6 +287,17 @@
     </None>
     <Content Include="Data\dsAsientoContable.xss">
       <DependentUpon>dsAsientoContable.xsd</DependentUpon>
+    </Content>
+    <Content Include="Data\dsCalculoDepreciacion.xsc">
+      <DependentUpon>dsCalculoDepreciacion.xsd</DependentUpon>
+    </Content>
+    <None Include="Data\dsCalculoDepreciacion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCalculoDepreciacion.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Data\dsCalculoDepreciacion.xss">
+      <DependentUpon>dsCalculoDepreciacion.xsd</DependentUpon>
     </Content>
     <None Include="Data\dsDepartamentos.xsd">
       <SubType>Designer</SubType>
