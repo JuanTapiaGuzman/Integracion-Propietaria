@@ -23,11 +23,12 @@ namespace ActivosFijosAPI.Models
 
             foreach (Data.dsDepartamentos.DepartamentosRow data in dt)
             {
-                var departamento = new Departamento();
-
-                departamento.Id = data.ID_Departamento;
-                departamento.Descripcion = data.Descripcion;
-                departamento.Estado = data.Estado;
+                var departamento = new Departamento
+                {
+                    Id = data.ID_Departamento,
+                    Descripcion = data.Descripcion,
+                    Estado = data.Estado
+                };
 
                 listaDepartamentos.Add(departamento);
             }
@@ -35,10 +36,25 @@ namespace ActivosFijosAPI.Models
             return listaDepartamentos;
         }
 
-        public Departamento SelectDepartamento(int idDepartamento)
+        public Departamento SelectDepartamento(int idDepartamento = 1)
         {
             Data.dsDepartamentosTableAdapters.DepartamentoTableAdapter adapter = new Data.dsDepartamentosTableAdapters.DepartamentoTableAdapter();
             Data.dsDepartamentos.DepartamentoDataTable dt = adapter.SelectDepartamento(idDepartamento);
+
+            if (dt.Rows.Count <= 0)
+                return new Departamento();
+
+            this.Id = dt.First().ID_Departamento;
+            this.Descripcion = dt.First().Descripcion;
+            this.Estado = dt.First().Estado;
+
+            return this;
+        }
+
+        public Departamento SelectDepartamentoLatest()
+        {
+            Data.dsDepartamentosTableAdapters.DepartamentoTableAdapter adapter = new Data.dsDepartamentosTableAdapters.DepartamentoTableAdapter();
+            Data.dsDepartamentos.DepartamentoDataTable dt = adapter.SelectDepartamentoLatest();
 
             if (dt.Rows.Count <= 0)
                 return new Departamento();

@@ -41,15 +41,19 @@ namespace ActivosFijosAPI.Controllers
         }
 
         // POST: api/Empleado
-        public void Post([FromBody]TipoActivo value)
+        public HttpResponseMessage Post([FromBody]TipoActivo value)
         {
             TipoActivo.InsertTipoActivo(value.Descripcion, value.CuentaContableCompra, value.CuentaContableDepreciacion, value.Estado);
+
+            return Request.CreateResponse(HttpStatusCode.OK, new TipoActivo().SelectTipoActivoLatest());
         }
 
         // PUT: api/Empleado/5
-        public void Put([FromBody]TipoActivo value)
+        public HttpResponseMessage Put([FromBody]TipoActivo value)
         {
             TipoActivo.UpdateTipoActivo(value.Id, value.Descripcion, value.CuentaContableCompra, value.CuentaContableDepreciacion, value.Estado);
+
+            return Request.CreateResponse(HttpStatusCode.OK, new TipoActivo().SelectTipoActivoLatest());
         }
 
         // DELETE: api/Empleado/5
