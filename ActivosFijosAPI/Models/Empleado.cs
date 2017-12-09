@@ -66,6 +66,26 @@ namespace ActivosFijosAPI.Models
             return this;
         }
 
+        public Empleado SelectEmpleadoLatest()
+        {
+            Data.dsEmpleadosTableAdapters.EmpleadoTableAdapter adapter = new Data.dsEmpleadosTableAdapters.EmpleadoTableAdapter();
+            Data.dsEmpleados.EmpleadoDataTable dt = adapter.SelectEmpleadoLatest();
+
+            if (dt.Rows.Count <= 0)
+                return new Empleado();
+
+            this.Id = dt.First().ID_Empleado;
+            this.Nombre = dt.First().Nombre;
+            this.Cedula = dt.First().Cedula;
+            this.ID_Departamento = dt.First().ID_Departamento;
+            this.TipoPersona = dt.First().TipoPersona;
+            this.FechaIngreso = dt.First().FechaIngreso.ToShortDateString();
+            this.Estado = dt.First().Estado;
+
+
+            return this;
+        }
+
         public static void InsertEmpleado(string Nombre, string Cedula, int ID_Empleado, string TipoPersona, string FechaIngreso, bool estado)
         {
             Data.dsEmpleadosTableAdapters.EmpleadoTableAdapter adapter = new Data.dsEmpleadosTableAdapters.EmpleadoTableAdapter();

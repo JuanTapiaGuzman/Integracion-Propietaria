@@ -68,6 +68,27 @@ namespace ActivosFijosAPI.Models
             return this;
         }
 
+        public AsientoContable SelectAsientoContableLatest()
+        {
+            Data.dsAsientoContableTableAdapters.AsientoContableTableAdapter adapter = new Data.dsAsientoContableTableAdapters.AsientoContableTableAdapter();
+            Data.dsAsientoContable.AsientoContableDataTable dt = adapter.SelectAsientoContableLatest();
+
+            if (dt.Rows.Count <= 0)
+                return new AsientoContable();
+
+            this.Id = dt.First().ID_AsientoContable;
+            this.Descripcion = dt.First().Descripcion;
+            this.ID_TipoInventario = dt.First().ID_TipoInventario;
+            this.CuentaContable = dt.First().CuentaContable;
+            this.TipoMovimiento = dt.First().TipoMovimiento;
+            this.FechaAsiento = dt.First().FechaAsiento.ToShortDateString();
+            this.MontoAsiento = dt.First().MontoAsiento;
+            this.Estado = dt.First().Estado;
+
+
+            return this;
+        }
+
         public static void InsertAsientoContable(string Descripcion, string ID_TipoInventario, string CuentaContable, string TipoMovimiento, string FechaAsiento, decimal MontoAsiento, bool Estado)
         {
             Data.dsAsientoContableTableAdapters.AsientoContableTableAdapter adapter = new Data.dsAsientoContableTableAdapters.AsientoContableTableAdapter();

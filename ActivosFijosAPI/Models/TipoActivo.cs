@@ -60,6 +60,25 @@ namespace ActivosFijosAPI.Models
             return this;
         }
 
+
+        public TipoActivo SelectTipoActivoLatest()
+        {
+            Data.dsTipoActivosTableAdapters.TipoActivoTableAdapter adapter = new Data.dsTipoActivosTableAdapters.TipoActivoTableAdapter();
+            Data.dsTipoActivos.TipoActivoDataTable dt = adapter.SelectTipoActivoLatest();
+
+            if (dt.Rows.Count <= 0)
+                return new TipoActivo();
+
+            this.Id = dt.First().ID_TipoActivo;
+            this.Descripcion = dt.First().Descripcion;
+            this.CuentaContableCompra = dt.First().CuentaContableCompra;
+            this.CuentaContableDepreciacion = dt.First().CuentaContableDepreciacion;
+            this.Estado = dt.First().Estado;
+
+
+            return this;
+        }
+
         public static void InsertTipoActivo(string Descripcion, string CuentaContableCompra, string CuentaContableDepreciacion, bool Estado)
         {
             Data.dsTipoActivosTableAdapters.TipoActivoTableAdapter adapter = new Data.dsTipoActivosTableAdapters.TipoActivoTableAdapter();
